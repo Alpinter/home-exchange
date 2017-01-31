@@ -1,0 +1,342 @@
+@import 'mixins';
+@import 'vars';
+@import 'mixins-flex';
+
+@include main;
+@include text-format;
+
+.btn {
+    border: 1px solid $color-gray;
+    border-radius: 1.5em;
+    margin-left: 2em;
+    padding: .8em 1.7em;
+    &:hover {
+        background: $color-gray;
+        color: #fff;
+    }
+}
+
+header {
+    width: 100%;
+    background: $color-darkblue;
+    @include flexbox;
+    @include flex-items-center;
+    .location {
+        width: 20%;
+        padding: .7em 2em;
+        background: $color-orange;
+        img {
+            width: 2em;
+            height: 2em;
+            vertical-align: middle;
+        }
+        a {
+            color: #fff;
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+    }
+    nav {        
+        width: 80%;
+        ul {
+            list-style-type: none;
+            li {
+                display: inline-block;
+                a {
+                    display: inline-block;
+                    color: #fff;
+                    margin: 0 2em;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.intro {
+    padding: 3em 15%;
+    height: 50em;
+    background: url(../slike/intro.jpg);
+    background-size: cover;
+    .headings {
+        margin-top: 35em;
+        background: rgba(55, 66, 73, .5);
+        h1, h3 {
+            color: #fff;
+            text-align: center;
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 3em;
+        }
+    }
+}
+
+.buttons {
+    padding: 2em 15%;
+    text-align: right;
+}
+
+.rooms {
+    padding: 3em 15% 1em;
+    background: $color-lightgray;
+    @include flexbox;
+    @include flex-wrap;
+    .room {
+        width: 20%;
+        height: 20em;
+        margin: 0 2em 2em 0;
+        .room-info {
+            display: none;
+            background: rgba(255, 255, 255, .6);
+            padding: 1em 1em 3em;
+            p {
+                color: #000;
+                font-size: 1.2em;
+            }
+        }
+        &:hover {
+            .room-info {
+                display: block;
+            }
+        }
+    }
+    
+    @for $i from 1 to 7 {
+        .room#{$i} {
+            background: url('../slike/' + $i + '.jpg');
+            background-size: cover;
+        }
+    }
+}
+
+.pricing {
+    padding: 3em 15% 2em;
+    text-align: center;
+    h2 {
+        margin-bottom: 2em;
+    }
+    p {
+        margin-bottom: 2em;
+    }
+    table {
+        width: 70%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        th, td {
+            padding: .5em;
+            border: 1px solid $color-gray;
+            text-align: center;
+        }
+        .orange {
+            background: $color-orange;
+            color: #fff;
+        }
+        .darkblue {
+            background: $color-darkblue;
+            color: #fff;
+        }
+        .none {
+            border: none;
+        }
+    }
+    .btn {
+        display: none;
+    }
+}
+
+.contact {
+    padding: 3em 15% 2em;
+    text-align: center;
+    background: $color-lightgray;
+    h2 {
+        margin-bottom: 2em;
+    }
+    p {
+        margin-bottom: 2em;
+    }
+    .info {
+        @include flexbox;
+        @include space-between;
+        @include flex-items-start;
+        iframe {
+            width: 30%;
+            height: 20em;
+        }
+        form {
+            width: 60%;
+            background: $color-orange;
+            padding: 1.5em;
+            @include flexbox;
+            @include flex-wrap;
+            @include space-between;
+            select {
+                width: 25%;
+                margin-bottom: 1em;
+                padding: .5em;
+            }
+            input[name=name] {
+                width: 70%;
+                margin-bottom: 1em;
+                padding: .5em;
+            }
+            input[name=email] {
+                width: 100%;
+                margin-bottom: 1em;
+                padding: .5em;
+            }
+            textarea {
+                width: 100%;
+                height: 7em;
+                padding: .5em;
+            }
+        }
+    }
+}
+
+footer {
+    background: $color-darkblue;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    line-height: 2em;
+    .orange-text {
+        color: $color-orange;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .btn {
+        padding: .7em 1.6em;
+        margin-left: 1.5em;
+    }
+    
+    header {
+        .location {
+            width: 25%;
+            padding: .5em 1.5em;
+            a {
+                font-size: 1em;
+            }
+        }
+        nav {
+            width: 75%;
+            ul {
+                li {
+                    a {
+                        font-size: .9em;
+                    }
+                }
+            }
+        }
+    }
+    
+    .intro {
+        padding: 3em 10%;
+        .headings {
+            margin-top: 25em;
+        }
+    }
+    
+    .buttons {
+        padding: 2em 10%;
+    }
+    
+    .rooms {
+        @include flex-center;
+        padding: 3em 10% 1em;
+        .room {
+            width: 46%;
+            margin: 0 auto 2em;
+        }
+    }
+    .pricing {
+        padding: 3em 10% 2em;
+        table {
+            width: 100%;
+        }
+    }
+    
+    .contact {
+        padding: 3em 10% 2em;
+        .info {
+            @include flex-wrap;
+            @include flex-center;
+            iframe {
+                width: 60%;
+                margin-bottom: 2em;
+            }
+            form {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .btn {
+        padding: .5em .8em;
+        font-size: .9em;
+        margin: 0 .3em;;
+    }
+    
+    header {
+        @include flex-wrap;
+        .location {
+            width: 100%;
+        }
+        nav {
+            width: 100%;
+            ul {
+                text-align: center;
+                li {
+                    width: 100%;
+                    margin: 1em 0;
+                }
+            }
+        }
+    }
+    
+    .intro {
+        padding: 1em 5%;
+        height: auto;
+        background: #000;
+        .headings {
+            margin: auto;
+            background: #000;
+            h1 {
+                font-size: 2.5em;
+            } 
+        }
+    }
+    
+    .buttons {
+        padding: 2em 5%;
+        text-align: center;
+    }
+    
+    .rooms {
+        padding: 2em 5% 1em;
+        .room {
+            width: 100%;
+            .room-info {
+                display: block;
+            }
+        }
+    }
+    .pricing {
+        padding: 2em 5% 2em;
+        table {
+            display: none;
+        }
+        .btn {
+            display: inline-block;
+            margin: auto;
+        }
+    }
+    .contact {
+        padding: 3em 5% 2em;
+    }
+}
